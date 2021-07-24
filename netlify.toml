@@ -1,0 +1,17 @@
+[build]
+  publish = "public"
+
+[functions]
+  directory = "functions"
+
+[[redirects]]
+  from = "/pro/*"
+  status = 200
+  force = true
+  conditions = {Role = ["pro"]}
+
+[[redirects]]
+  from = "/pro/*"
+  to = "/.netlify/functions/redirect"
+  status = 200
+  force = true
