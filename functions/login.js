@@ -26,7 +26,7 @@ exports.handler = async function (event, context) {
       headers: {
         'Set-Cookie': `nf_jwt=${access_token}; Path=/; HttpOnly; Secure`,
         'Cache-Control': 'no-cache',
-        Location: decodeURIComponent(redirect) || '/pro/',
+        Location: redirect || '/pro/',
       },
     };
   } catch (error) {
@@ -35,7 +35,7 @@ exports.handler = async function (event, context) {
       statusCode: 302,
       headers: {
         'Cache-Control': 'no-cache',
-        Location: `/login/?redirect=${redirect}`,
+        Location: `/login/?redirect=${encodeURIComponent(redirect)}`,
       },
     };
   }
